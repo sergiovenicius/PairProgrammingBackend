@@ -8,6 +8,6 @@ namespace Domain
 {
     public interface IDiscount
     {
-        int GetDiscount(ICartProduct product);
+        int GetDiscount(IShoppingCart cart);
     }
 }

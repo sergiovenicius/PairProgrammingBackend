@@ -8,21 +8,16 @@ namespace Domain
 {
     public class ThreeForTwoDiscount : IDiscount
     {
-        public int GetDiscount(ICartProduct product)
+        public int GetDiscount(IShoppingCart cart)
         {
-            if (product.GetQuantity() < 3)
-                return 0;
-
-            int total = 0;
-            var qty = product.GetQuantity();
-            do
+            int discount = 0;
+            foreach (var item in cart.GetCartProducts())
             {
-                total += product.GetPrice();
-                qty -= 3;
+                if (item.GetName().ToLower().StartsWith("jeans"))
+                    discount += item.GetQuantity() / 3 * item.GetPrice();
+            }
 
-            } while (qty >= 3);
-
-            return total;
+            return discount;
         }
     }
 }

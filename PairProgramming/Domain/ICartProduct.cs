@@ -16,6 +16,6 @@ namespace Domain
 
         int GetTotalAmount();
 
-        int GetDiscount();
+        string GetName();
     }
 }

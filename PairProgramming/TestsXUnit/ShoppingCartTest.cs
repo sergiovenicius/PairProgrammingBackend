@@ -35,12 +35,26 @@ namespace TestsXUnit
             Assert.Equal(3000, cart.GetTotalAmount());
         }
 
+        [Fact]
+        public void SellNoJeansTest()
+        {
+            ShoppingCart cart = new ShoppingCart();
+            cart.AddCartProduct(new CartProduct(2, "T-Shirt", 3, 1999));
+
+            var discount = new ThreeForTwoDiscount();
+            cart.ApplyDiscount(discount);
+
+            Assert.Equal(3998, cart.GetTotalAmount());
+        }
 
         [Fact]
         public void SellTwoJeansTest()
         {
             ShoppingCart cart = new ShoppingCart();
-            cart.AddCartProduct(new CartProduct(2, "Jeans", 2, 1999, new ThreeForTwoDiscount()));
+            cart.AddCartProduct(new CartProduct(2, "Jeans", 2, 1999));
+
+            var discount = new ThreeForTwoDiscount();
+            cart.ApplyDiscount(discount);
 
             Assert.Equal(3998, cart.GetTotalAmount());
         }
@@ -48,14 +62,21 @@ namespace TestsXUnit
         public void SellThreeJeansTest()
         {
             ShoppingCart cart = new ShoppingCart();
-            cart.AddCartProduct(new CartProduct(2, "Jeans", 3, 2000, new ThreeForTwoDiscount()));
+            cart.AddCartProduct(new CartProduct(2, "Jeans", 3, 2000));
+
+            var discount = new ThreeForTwoDiscount();
+            cart.ApplyDiscount(discount);
+
             Assert.Equal(4000, cart.GetTotalAmount());
         }
         [Fact]
         public void SellFiveJeansTest()
         {
             ShoppingCart cart = new ShoppingCart();
-            cart.AddCartProduct(new CartProduct(2, "Jeans", 5, 2000, new ThreeForTwoDiscount()));
+            cart.AddCartProduct(new CartProduct(2, "Jeans", 5, 2000));
+
+            var discount = new ThreeForTwoDiscount();
+            cart.ApplyDiscount(discount);
 
             Assert.Equal(8000, cart.GetTotalAmount());
         }
@@ -63,8 +84,11 @@ namespace TestsXUnit
         public void SellSixJeansOneShirtTest()
         {
             ShoppingCart cart = new ShoppingCart();
-            cart.AddCartProduct(new CartProduct(1, "T-Shirt", 1, 1099, new ThreeForTwoDiscount()));
-            cart.AddCartProduct(new CartProduct(2, "Jeans", 6, 1999, new ThreeForTwoDiscount()));
+            cart.AddCartProduct(new CartProduct(1, "T-Shirt", 1, 1099));
+            cart.AddCartProduct(new CartProduct(2, "Jeans", 6, 1999));
+
+            var discount = new ThreeForTwoDiscount();
+            cart.ApplyDiscount(discount);
 
             Assert.Equal(9095, cart.GetTotalAmount());
         }
@@ -73,7 +97,10 @@ namespace TestsXUnit
         {
             ShoppingCart cart = new ShoppingCart();
             cart.AddCartProduct(new CartProduct(1, "T-Shirt", 3, 1000));
-            cart.AddCartProduct(new CartProduct(2, "Jeans", 6, 2000, new ThreeForTwoDiscount()));
+            cart.AddCartProduct(new CartProduct(2, "Jeans", 6, 2000));
+
+            var discount = new ThreeForTwoDiscount();
+            cart.ApplyDiscount(discount);
 
             Assert.Equal(11000, cart.GetTotalAmount());
         }

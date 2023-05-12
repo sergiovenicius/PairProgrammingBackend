@@ -38,17 +38,14 @@ namespace Domain
             return _quantity;
         }
 
-        public int GetDiscount()
+        public string GetName()
         {
-            if (_discount != null)
-                return _discount.GetDiscount(this);
-
-            return 0;
+            return _name;
         }
 
         public int GetTotalAmount()
         {
-            return GetPrice() * GetQuantity() - GetDiscount();
+            return GetPrice() * GetQuantity();
         }
     }
 }

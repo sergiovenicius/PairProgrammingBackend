@@ -10,6 +10,7 @@ namespace Domain
     public class ShoppingCart : IShoppingCart
     {
         private readonly List<ICartProduct> _products;
+        private int _discount;
 
         public ShoppingCart()
         {
@@ -32,7 +33,20 @@ namespace Domain
 
         public int GetTotalAmount()
         {
-            return _products.Sum(_ => _.GetTotalAmount());
+            return _products.Sum(_ => _.GetTotalAmount()) - _discount;
         }
+
+        public int GetDiscount()
+        {
+            return _discount;
+        }
+
+        public int ApplyDiscount(IDiscount discount)
+        {
+            _discount += discount.GetDiscount(this);
+
+            return _discount;
+        }
+
     }
 }
