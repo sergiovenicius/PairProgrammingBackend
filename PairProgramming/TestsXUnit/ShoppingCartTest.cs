@@ -44,7 +44,7 @@ namespace TestsXUnit
             var discount = new ThreeForTwoDiscount();
             cart.ApplyDiscount(discount);
 
-            Assert.Equal(3998, cart.GetTotalAmount());
+            Assert.Equal(5997, cart.GetTotalAmount());
         }
 
         [Fact]

@@ -19,7 +19,7 @@ namespace Domain
 
         public void AddCartProduct(ICartProduct newProduct)
         {
-            if (_products.Exists(p => p.GetId() == newProduct.GetId()))
+            if (_products.Exists(p => p.Id == newProduct.Id))
                 throw new Exception("Product is already in the cart");
 
             _products.Add(newProduct);

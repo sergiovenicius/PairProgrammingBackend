@@ -8,14 +8,11 @@ namespace Domain
 {
     public interface ICartProduct
     {
-        int GetId();
-
-        int GetQuantity();
-
-        int GetPrice();
+        int Id { get; set; }
+        int Quantity { get; set; }
+        int Price { get; set; }
+        string Name { get; set; }
 
         int GetTotalAmount();
-
-        string GetName();
     }
 }

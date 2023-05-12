@@ -13,8 +13,8 @@ namespace Domain
             int discount = 0;
             foreach (var item in cart.GetCartProducts())
             {
-                if (item.GetName().ToLower().StartsWith("jeans"))
-                    discount += item.GetQuantity() / 3 * item.GetPrice();
+                if (item.Name.ToLower().StartsWith("jeans"))
+                    discount += item.Quantity / 3 * item.Price;
             }
 
             return discount;

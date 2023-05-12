@@ -8,44 +8,22 @@ namespace Domain
 {
     public class CartProduct: ICartProduct
     {
-        private int _id;
-        private string _name;
-        private int _quantity;
-        private int _price;
-        private IDiscount _discount;
+        public int Id { get; set; }
+        public int Quantity { get; set; }
+        public int Price { get; set; }
+        public string Name { get; set; }
 
-        public CartProduct(int id, string name, int quantity, int price, IDiscount discount = null)
+        public CartProduct(int id, string name, int quantity, int price)
         {
-            _id = id;
-            _name = name;
-            _quantity = quantity;
-            _price = price;
-            _discount = discount;
-        }
-
-        public int GetId()
-        {
-            return _id;
-        }
-
-        public int GetPrice()
-        {
-            return _price;
-        }
-
-        public int GetQuantity()
-        {
-            return _quantity;
-        }
-
-        public string GetName()
-        {
-            return _name;
+            Id = id;
+            Name = name;
+            Quantity = quantity;
+            Price = price;
         }
 
         public int GetTotalAmount()
         {
-            return GetPrice() * GetQuantity();
+            return Price * Quantity;
         }
     }
 }
