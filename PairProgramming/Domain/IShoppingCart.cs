@@ -8,7 +8,7 @@ namespace Domain
 {
     public interface IShoppingCart
     {
-        void AddCartProduct(ICartProduct p);
+        void AddCartProduct(ICartProduct newProduct);
 
         IReadOnlyList<ICartProduct> GetCartProducts();
 
